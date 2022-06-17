@@ -1,12 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import TextInput from './components/text-input.js';
+import MakeGuess from './components/submitGuess.js'; 
+import RandomString from './components/randomNumber.js';
 
 function App() {
   return (
     <div className="App">
-      <p>Return of the function</p>
-      <TextInput />
+      <p>NORDLE</p>
+        <MakeGuess />
+        <RandomString />
     </div>
   );
 }
