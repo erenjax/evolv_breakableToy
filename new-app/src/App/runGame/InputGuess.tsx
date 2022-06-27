@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import * as Number from '../../model/number';
 
-function InputGuess() {
+const InputGuess = () => {
   const [guess, setGuess] = useState('');
 
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -8,9 +9,15 @@ function InputGuess() {
     setGuess(newGuess);
   };
 
-  const handleSubmit = (event: React.KeyboardEvent) => {
+
+  const handleSubmit = (event: React.KeyboardEvent): void => {
     if (event.key === 'Enter'){
-      console.log({guess});
+      console.log({guess})
+    try {
+      console.log({number: Number.fromString(guess)})
+    } catch(e){
+      console.log(e)
+    }
     }
   };
    

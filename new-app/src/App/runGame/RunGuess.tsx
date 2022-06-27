@@ -1,6 +1,6 @@
 import React from 'react';
-import InputGuess from './input-guess';
-import RandomNumber from './rand-num';
+import InputGuess from './InputGuess';
+import RandomNumber from './RandNum';
 
 function RunGuess() {
   return(
@@ -13,3 +13,5 @@ function RunGuess() {
 }
 
 export default RunGuess; 
+
+
