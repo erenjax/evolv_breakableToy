@@ -1,11 +1,11 @@
 import React from 'react';
-import * as Number from '../../model/number';
+import * as Code from '../../model/number';
 
 const RandomNumber = () => {
 
-  const getRandomDigit = (): Number.NumberDigit => {
+  const getRandomDigit = (): Code.CodeDigit => {
     const rand = Math.floor((Math.random() * 10)) 
-    const dig = Number.allDigits
+    const dig = Code.allDigits
     const randomDigit = dig[rand]
     if (randomDigit){
       return randomDigit 
@@ -15,8 +15,8 @@ const RandomNumber = () => {
     }
   }
 
-  const buildRandomNumber = (): Number.Number => {
-    const randomNumber: Number.Number = [getRandomDigit(), getRandomDigit(), getRandomDigit(), getRandomDigit(),]
+  const buildRandomNumber = (): Code.Code => {
+    const randomNumber: Code.Code = [getRandomDigit(), getRandomDigit(), getRandomDigit(), getRandomDigit(),]
     console.log({randomNumber})
     return randomNumber 
   }
