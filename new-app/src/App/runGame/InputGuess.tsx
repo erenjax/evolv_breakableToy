@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import * as Number from '../../model/number';
+import * as Code from '../../model/number';
 
 const InputGuess = () => {
   const [guess, setGuess] = useState('');
@@ -14,7 +14,7 @@ const InputGuess = () => {
     if (event.key === 'Enter'){
       console.log({guess})
     try {
-      console.log({number: Number.fromString(guess)})
+      console.log({guess: Code.fromString(guess)})
     } catch(e){
       console.log(e)
     }
