@@ -1,1 +1,1 @@
-export {default } from "./RunGuess"
+export { default } from "./RunGame"
