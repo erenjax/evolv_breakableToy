@@ -1,10 +1,10 @@
 export type CodeDigit = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0
-export type Code = [ CodeDigit, CodeDigit, CodeDigit, CodeDigit  ]
+export type Code = [ CodeDigit, CodeDigit, CodeDigit, CodeDigit  ] 
 
-export const allDigits:CodeDigit[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+export const allDigits:CodeDigit[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-export const numToString = (num: Code) : string => {
-  return num.join("")
+export const codeToString = (code: Code) : string => {
+  return code.join("")
 }
 
 export const charToNum = (char: string): number => {
@@ -40,6 +40,6 @@ const toCode = (codeDigits: CodeDigit[]): Code => {
     return [codeDigits[0] , codeDigits[1] , codeDigits[2] , codeDigits[3]]
   }
   else {
-    throw new Error(`Array numberDigits ${codeDigits} cannot be converted to Number`)
+    throw new Error(`Array numberDigits ${codeDigits} cannot be converted to Code`)
   }
 }

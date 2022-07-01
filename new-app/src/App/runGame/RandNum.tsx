@@ -1,14 +1,14 @@
-import React from 'react';
-import * as Code from '../../model/number';
+import React, {useState} from 'react';
+import * as Code from '../../model/code';
 
 const RandomNumber = () => {
+  const [randString, setRandString] = useState('')
 
   const getRandomDigit = (): Code.CodeDigit => {
-    const rand = Math.floor((Math.random() * 10)) 
     const dig = Code.allDigits
-    const randomDigit = dig[rand]
-    if (randomDigit){
-      return randomDigit 
+    const rand = Math.floor((Math.random() * dig.length)) as Code.CodeDigit 
+    if (dig.includes(rand)){
+      return rand 
     } 
     else {
       throw new Error(`Failed to get random digit`)
@@ -17,7 +17,7 @@ const RandomNumber = () => {
 
   const buildRandomNumber = (): Code.Code => {
     const randomNumber: Code.Code = [getRandomDigit(), getRandomDigit(), getRandomDigit(), getRandomDigit(),]
-    console.log({randomNumber})
+    setRandString(Code.codeToString(randomNumber))
     return randomNumber 
   }
   const handleOnClickGenerateNumber = () => {
@@ -29,6 +29,7 @@ const RandomNumber = () => {
       <button onClick={handleOnClickGenerateNumber}>
         Generate Number
       </button> 
+      <p>Random Number: {randString}</p>
     </div>
   );
 };
