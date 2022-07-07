@@ -1,17 +1,17 @@
-import React from 'react';
-import InputGuess from './InputGuess';
-import RandomNumber from './RandNum';
+import React from "react";
+import InputGuess from "./InputGuess";
+import RandomNumber from "./RandNum";
+import OtpInput from "./otpInput";
 
 function RunGame() {
-  return(
+  return (
     <div>
-      <p>Run Game</p>
+      <h1>Nordle</h1>
       <RandomNumber />
-      <InputGuess /> 
+      <InputGuess />
+      <OtpInput />
     </div>
   );
 }
 
-export default RunGame; 
-
-
+export default RunGame;

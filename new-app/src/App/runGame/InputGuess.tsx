@@ -26,19 +26,29 @@ const InputGuess = () => {
   };
 
   return (
-    <div>
-      <input
-        value={guessString}
-        onChange={handleInput}
-        placeholder="Enter a 4-digit number"
-        className="input"
-        maxLength={4}
-        onKeyPress={handleOnKeyPress}
-      />
-      <button onClick={handleOnClick}>Submit</button>
-      <p>Press Enter to submit a guess</p>
-      <p>Your Guess: {printGuess}</p>
-    </div>
+    <body className="App">
+      <div className="bg-purple-200">
+        <h2>Real Guess Input</h2>
+        <div>
+          <input
+            value={guessString}
+            onChange={handleInput}
+            placeholder="Enter a 4-digit number"
+            className="input"
+            maxLength={4}
+            onKeyPress={handleOnKeyPress}
+          />
+          <button
+            className="bg-orange-500 border hover:bg-orange-700 text-white font-bold
+            py-2 px-4 rounded"
+            onClick={handleOnClick}
+          >
+            Submit
+          </button>
+          <p>Your Guess: {printGuess}</p>
+        </div>
+      </div>
+    </body>
   );
 };
 
