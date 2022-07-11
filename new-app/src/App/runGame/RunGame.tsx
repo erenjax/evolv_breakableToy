@@ -1,7 +1,7 @@
 import React from "react";
 import InputGuess from "./InputGuess";
 import RandomNumber from "./RandNum";
-import OtpInput from "./otpInput";
+import OtpInput from "./OTPInput";
 
 function RunGame() {
   return (

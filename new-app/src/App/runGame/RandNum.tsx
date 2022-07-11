@@ -10,7 +10,7 @@ const RandomNumber = () => {
     if (dig.includes(rand)) {
       return rand;
     } else {
-      throw new Error(`Failed to get random digit`);
+      throw new Error("Failed to get random digit");
     }
   };
 
@@ -29,9 +29,9 @@ const RandomNumber = () => {
   };
 
   return (
-    <div className="App border">
+    <div className="border">
       <button
-        className="box-button bg-orange-500 border hover:bg-orange-700 text-white font-bold
+        className="box-button bg-purple-300 border hover:bg-purple-500 text-white font-bold
             py-2 px-4 rounded"
         onClick={handleOnClickGenerateNumber}
       >

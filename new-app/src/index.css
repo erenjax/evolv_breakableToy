@@ -13,31 +13,12 @@
 
 @layer components {
   .button-box {
-    background-color: #c6c6c6;
+    background-color: #57376d;
     border-radius: theme("borderRadius.lg");
     padding: theme("spacing.6");
     box-shadow: theme("boxShadow.xl");
   }
-  .otp-input {
-    container: {
-      flex: 1;
-      aligniteme: "center";
-      jusifycontent: "center";
-    }
-    hiddenguessinput: {
-      position: "absolute";
-      height: 0;
-      width: 0;
-      opacity: 0;
-    }
-    inputscontainer: {
-      width: "60%";
-      flexdirection: "row";
-      justifycontent: "space-between";
-    }
-  }
 }
-
 body {
   background-color: #e6ceee;
   margin: 8;

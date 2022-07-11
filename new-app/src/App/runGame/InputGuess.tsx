@@ -4,8 +4,11 @@ import * as Code from "../../model/code";
 const InputGuess = () => {
   const [guessString, setGuessString] = useState("");
   const [printGuess, setPrintGuess] = useState("");
+  const GUESS_MAX_LENGTH = 4;
 
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeGuessString = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const newGuess = event.target.value;
     setGuessString(newGuess);
   };
@@ -21,27 +24,27 @@ const InputGuess = () => {
       submitGuess();
     }
   };
-  const handleOnClick = () => {
+  const handleOnClickSubmit = () => {
     submitGuess();
   };
 
   return (
-    <body className="App">
+    <body>
       <div className="bg-purple-200">
         <h2>Real Guess Input</h2>
         <div>
           <input
             value={guessString}
-            onChange={handleInput}
+            onChange={handleOnChangeGuessString}
             placeholder="Enter a 4-digit number"
             className="input"
-            maxLength={4}
+            maxLength={GUESS_MAX_LENGTH}
             onKeyPress={handleOnKeyPress}
           />
           <button
-            className="bg-orange-500 border hover:bg-orange-700 text-white font-bold
+            className="bg-purple-300 border hover:bg-purple-500 text-white font-bold
             py-2 px-4 rounded"
-            onClick={handleOnClick}
+            onClick={handleOnClickSubmit}
           >
             Submit
           </button>
