@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import * as Code from "../../model/code";
 
 const InputGuess = () => {
