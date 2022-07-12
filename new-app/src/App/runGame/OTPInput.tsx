@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 
 let currentOTPIndex: number = 0;
 const OtpInput = () => {
@@ -10,7 +10,7 @@ const OtpInput = () => {
   const handleOnChange = ({
     target,
   }: React.ChangeEvent<HTMLInputElement>): void => {
-    const { value } = target;
+    const {value} = target;
     const newOTP: string[] = [...otp];
     newOTP[currentOTPIndex] = value.substring(value.length - 1);
 
@@ -21,7 +21,7 @@ const OtpInput = () => {
   };
 
   const handleOnKeyDown = (
-    { key }: React.KeyboardEvent<HTMLInputElement>,
+    {key}: React.KeyboardEvent<HTMLInputElement>,
     index: number
   ) => {
     currentOTPIndex = index;

@@ -1,15 +1,13 @@
 import React from "react";
-import InputGuess from "./InputGuess";
 import RandomNumber from "./RandNum";
-import OtpInput from "./OTPInput";
+import OtpInputGuess from "./OTPInputGuess";
 
 function RunGame() {
   return (
     <div>
       <h1>Nordle</h1>
       <RandomNumber />
-      <InputGuess />
-      <OtpInput />
+      <OtpInputGuess />
     </div>
   );
 }
