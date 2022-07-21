@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import * as Code from "../../model/code";
 
-const RandomNumber = () => {
+const RandomNumber = ({randomNumber, setRandomNumber}: {randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>}) => {
   const [randString, setRandString] = useState("");
 
   const getRandomDigit = (): Code.CodeDigit => {
@@ -15,13 +15,14 @@ const RandomNumber = () => {
   };
 
   const buildRandomNumber = (): Code.Code => {
-    const randomNumber: Code.Code = [
+    const randNum: Code.Code = [
       getRandomDigit(),
       getRandomDigit(),
       getRandomDigit(),
       getRandomDigit(),
     ];
-    setRandString(Code.codeToString(randomNumber));
+    setRandomNumber(randNum)
+    setRandString(Code.codeToString(randNum));
     return randomNumber;
   };
   const handleOnClickGenerateNumber = () => {

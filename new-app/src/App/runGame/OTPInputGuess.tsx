@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import * as Code from '../../model/code';
 
-const OTPInputGuess = () => {
-  const [guess, setGuess] = useState(new Array(4).fill(""));
+const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>}) => {
   const [printGuess, setPrintGuess] = useState("");
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
@@ -42,12 +40,9 @@ const OTPInputGuess = () => {
   const submitGuess = (): void => {
     try {
       const stringForm: string = guess.join('');
-      const codeForm: Code.Code = Code.fromString(stringForm);
       setErrorMessage("");
-      console.log({codeForm});
       setPrintGuess(stringForm);
     } catch (error) {
-      console.error({guess});
       setErrorMessage("invalid guess");
     }
   };
