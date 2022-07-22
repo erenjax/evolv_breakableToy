@@ -56,7 +56,7 @@ const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatc
   return (
     <div>
       <div className="flex items-center justify-center">
-        <div className="m-4 p-4 md:p-8 border-terminal-orange border-2 bg-vscode-teal-dark rounded-2xl shadow-inner">
+        <div className="m-2 p-4 md:p-8 border-terminal-orange border-2 bg-vscode-teal-dark rounded-2xl shadow-inner">
           <div className="space-x-2 md:space-x-4">
             {guess.map((_, index) => {
               return (
