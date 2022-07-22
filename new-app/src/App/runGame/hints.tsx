@@ -13,7 +13,7 @@ const Hints = ({guess, randomNumber}: {guess: any[], randomNumber: Code.Code}) =
   return (
     <div>
       <button
-        className="bg-purple-300 border hover:bg-purple-500 text-white font-bold py-4 px-8 rounded"
+        className="button-1"
         onClick={handleOnClickGame}
       >
         Run Game

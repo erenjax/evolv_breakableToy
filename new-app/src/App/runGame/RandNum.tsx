@@ -30,10 +30,9 @@ const RandomNumber = ({randomNumber, setRandomNumber}: {randomNumber: Code.Code,
   };
 
   return (
-    <div className="border">
+    <div className="my-4">
       <button
-        className="box-button bg-purple-300 border hover:bg-purple-500 text-white font-bold
-            py-2 px-4 rounded"
+        className="button-1 m-2"
         onClick={handleOnClickGenerateNumber}
       >
         Generate Number

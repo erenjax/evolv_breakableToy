@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
+
 const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>}) => {
   const [printGuess, setPrintGuess] = useState("");
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
@@ -55,15 +56,15 @@ const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatc
   return (
     <div>
       <div className="flex items-center justify-center">
-        <div className="m-4 p-8 border w-160 h-40 bg-gray-300 shadow-inner">
-          <div className="space-x-4">
+        <div className="m-4 p-4 md:p-8 border-terminal-orange border-2 bg-vscode-teal-dark rounded-2xl shadow-inner">
+          <div className="space-x-2 md:space-x-4">
             {guess.map((_, index) => {
               return (
                 <React.Fragment key={index}>
                   <input
                     ref={index === activeOTPIndex ? inputRef : null}
                     type="number"
-                    className="w-24 h-24 border-2 rounded bg-transparent shadow-md text-center text-2xl font-semibold"
+                    className="box-input"
                     onChange={handleOnChange}
                     onKeyDown={(e) => handleOnKeyDown(e, index)}
                     value={guess[index]}
@@ -76,8 +77,7 @@ const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatc
       </div>
       <div className="m-4">
         <button
-          className="bg-purple-300 border hover:bg-purple-500 text-white font-bold
-            py-4 px-8 rounded"
+          className="button-1"
           onClick={handleOnClickSubmit}
         >
           Submit

@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-[80px];
+  }
+  h2 {
+    @apply text-xl;
+  }
+  .button-1{
+    @apply bg-black border hover:border-hacky-green hover:text-hacky-green text-white font-bold py-2 px-4 rounded
+  }
+}
+
+@layer components {
+  .app{
+    @apply text-center
+  }
+  .app-background{
+    @apply bg-black
+  }
+  .app-header{
+    @apply bg-black h-screen w-screen flex flex-col justify-center text-hacky-green font-mono
+  }
+  .app-runGame{
+    @apply justify-center self-center h-full w-full flex md:h-fit md:w-fit
+   }
+  .box-output{
+    @apply flex justify-center m-2 border-4 bg-black rounded-lg text-center font-semibold w-16 h-16 text-xl md:text-3xl md:w-24 md:h-24
+   }
+  .box-input{
+    @apply border-terminal-orange outline-hacky-green border-[3px] rounded-xl bg-vscode-teal-light shadow-md text-center font-semibold w-14 h-14 text-xl md:text-3xl md:w-24 md:h-24
+  }
+
+  .app-spinner{
+    @apply h-40
+  }
+}

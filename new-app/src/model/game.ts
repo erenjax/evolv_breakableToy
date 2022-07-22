@@ -1,8 +1,6 @@
 import * as Code from '../model/code'
 
-export const hintCount = (randomNumber: Code.Code, guess: Code.Code): number => {
-  let keyCount: number = 0
-
+export const getHintArray = (randomNumber: Code.Code, guess: Code.Code): string[] => {
   const iterateCode = (value: number, index: number): string => {
     if (randomNumber[index] === value) {
       return "key"
@@ -10,6 +8,14 @@ export const hintCount = (randomNumber: Code.Code, guess: Code.Code): number => 
     else {return "miss"}
   }
   const hintArray: string[] = guess.map(iterateCode)
+
+  return hintArray
+}
+
+export const hintCount = (randomNumber: Code.Code, guess: Code.Code): number => {
+  let keyCount: number = 0
+
+  const hintArray: string[] = getHintArray(randomNumber, guess)
 
   const count = (value: string) => {
     if (value === "key") {
