@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities{
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 @layer base {
   h1 {
     @apply text-[80px];
@@ -33,7 +41,6 @@
   .box-input{
     @apply border-terminal-orange outline-hacky-green border-[3px] rounded-xl bg-vscode-teal-light shadow-md text-center font-semibold w-14 h-14 text-xl md:text-3xl md:w-24 md:h-24
   }
-
   .app-spinner{
     @apply h-40
   }
