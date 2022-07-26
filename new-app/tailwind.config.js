@@ -9,6 +9,7 @@ module.exports = {
         "purple": "#4b296b",
         "charcoal": "#161925",
         "hacky-green": "#5aff15",
+        "output-wrong-red": "#c1292e",
         "vscode-teal-dark": "#06373a",
         "vscode-teal-light": "#1f5f58",
         "terminal-orange": "#ff7711"

@@ -4,8 +4,9 @@ import * as Code from '../../model/code';
 import ClassNames from 'classnames';
 
 const RenderGuess = ({randomNumber, guess}: {randomNumber: Code.Code, guess: any[]}) => {
-  const guessCode: Code.Code = Code.fromString(guess.join(''))
-  const hintArray: string[] = Game.getHintArray(randomNumber, guessCode)
+  const guessCode = Code.fromString(guess.join(''))
+  const hintArray = Game.getHintArray(randomNumber, guessCode)
+
   const buildDigitStyle = (hint?: string): string => {
     switch (hint) {
       case ("miss"):
