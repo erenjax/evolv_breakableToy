@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react';
+import * as Code from '../../model/code';
+import * as Game from '../../model/game';
+import ClassNames from 'classnames';
 
-
-const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>}) => {
+const OTPInputGuess = ({guess, setGuess, randomNumber}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code}) => {
   const [printGuess, setPrintGuess] = useState("");
+  const [codeGuess, setCodeGuess] = useState([0, 0, 0, 0])
+  const [hintArray, setHintArray] = useState(['', '', '', ''])
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
@@ -40,8 +44,11 @@ const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatc
 
   const submitGuess = (): void => {
     try {
+      const codeForm: Code.Code = Code.fromString(guess.join(''))
       const stringForm: string = guess.join('');
       setErrorMessage("");
+      setCodeGuess(codeForm);
+      setHintArray(Game.getHintArray(randomNumber, codeForm));
       setPrintGuess(stringForm);
     } catch (error) {
       setErrorMessage("invalid guess");
@@ -52,9 +59,35 @@ const OTPInputGuess = ({guess, setGuess}: {guess: any[], setGuess: React.Dispatc
     submitGuess();
   };
 
+  const buildDigitStyle = (hint?: string): string => {
+    switch (hint) {
+      case ("miss"):
+        return "box-output border-[#c1292e] text-[#c1292e]"
+      case ("key"):
+        return "box-output border-hacky-green"
+    }
+    return "box-output border-gray-600"
+  }
+
 
   return (
     <div>
+      <div>
+        <div className="flex items-center justify-center">
+          <div className={ClassNames(buildDigitStyle(hintArray[0]))}>
+            <p className='self-center'>{codeGuess[0]}</p>
+          </div>
+          <div className={ClassNames(buildDigitStyle(hintArray[1]))}>
+            <p className='self-center'>{codeGuess[1]}</p>
+          </div>
+          <div className={ClassNames(buildDigitStyle(hintArray[2]))}>
+            <p className='self-center'>{codeGuess[2]}</p>
+          </div>
+          <div className={ClassNames(buildDigitStyle(hintArray[3]))}>
+            <p className='self-center'>{codeGuess[3]}</p>
+          </div>
+        </div>
+      </div>
       <div className="flex items-center justify-center">
         <div className="m-2 p-4 md:p-8 border-terminal-orange border-2 bg-vscode-teal-dark rounded-2xl shadow-inner">
           <div className="space-x-2 md:space-x-4">
