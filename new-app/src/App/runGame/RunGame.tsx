@@ -13,14 +13,14 @@ const RunGame = () => {
   }
 
   return (
-    <div className="app-runGame">
+    <div className="app-runGame z-0">
       <div className="flex flex-col justify-center bg-charcoal border-8 border-hacky-green rounded-3xl h-full w-full p-6 md:p-16">
         <h1>Nordle</h1>
         <RandomNumber  {...RandomNumberProps} />
-        <OtpInputGuess guess={guess} setGuess={setGuess} randomNumber={randomNumber} />
+        <OtpInputGuess guess={guess} setGuess={setGuess} randomNumber={randomNumber} setRandomNumber={setRandomNumber} />
       </div>
     </div>
-  );
+  )
 }
 
 export default RunGame;
