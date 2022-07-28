@@ -25,6 +25,8 @@ const RandomNumber = ({randomNumber, setRandomNumber}: {randomNumber: Code.Code,
   };
   const handleOnClickGenerateNumber = () => {
     buildRandomNumber();
+    console.log({randomNumber})
+
   };
 
   return (
