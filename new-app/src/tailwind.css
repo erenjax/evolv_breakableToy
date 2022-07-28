@@ -20,6 +20,9 @@ input[type="number"]::-webkit-outer-spin-button {
   .button-1{
     @apply bg-black border hover:border-hacky-green hover:text-hacky-green text-white font-bold py-2 px-4 rounded
   }
+  .help-button{
+    @apply flex w-fit h-fit bg-black border hover:border-hacky-green hover:text-hacky-green text-white font-bold py-2 px-4 rounded 
+  }
 }
 
 @layer components {
@@ -33,10 +36,10 @@ input[type="number"]::-webkit-outer-spin-button {
     @apply bg-black h-screen w-screen flex flex-col justify-center text-hacky-green font-mono
   }
   .app-runGame{
-    @apply justify-center self-center h-full w-full flex md:h-fit md:w-fit
+    @apply justify-center self-center h-full w-full md:h-fit md:w-fit
    }
   .box-output{
-    @apply flex justify-center m-2 border-4 bg-black rounded-lg text-center font-semibold w-16 h-16 text-xl md:text-3xl md:w-24 md:h-24
+    @apply transition ease-in-out duration-700 flex justify-center bg-black rounded-lg text-center font-semibold m-1 w-14 h-2 md:w-24 md:h-4 md:m-2
    }
   .box-input{
     @apply border-terminal-orange outline-hacky-green border-[3px] rounded-xl bg-vscode-teal-light shadow-md text-center font-semibold w-14 h-14 text-xl md:text-3xl md:w-24 md:h-24

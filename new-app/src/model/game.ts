@@ -26,6 +26,11 @@ export const hintCount = (randomNumber: Code.Code, guess: Code.Code): number => 
 
   return keyCount
 }
+
+export const getTriesCount = (tries: number): number => {
+  const addTry: number = tries += 1
+  return addTry
+}
 // export const getUnit = (randomNumber: Code.Code, guess: Code.Code): number => {
 //   let keyCount: number = 0
 //   let unitCount: number = 0
