@@ -1,12 +1,15 @@
 import React from 'react';
 import * as Code from '../../../model/code';
 
-const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber}: {showWinModal: boolean, setShowWinModal: React.Dispatch<React.SetStateAction<boolean>>, setGuess: React.Dispatch<React.SetStateAction<any[]>>, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>}) => {
+const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, setTries, setHintArray, setShowAlert}: {showWinModal: boolean, setShowWinModal: React.Dispatch<React.SetStateAction<boolean>>, setGuess: React.Dispatch<React.SetStateAction<any[]>>, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, setTries: React.Dispatch<React.SetStateAction<number>>, setHintArray: React.Dispatch<React.SetStateAction<string[]>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
   const handleOnClick = () => {
     setShowWinModal(false)
     setGuess(new Array(4).fill(""))
     setRandomNumber([0, 0, 0, 0])
+    setTries(0)
+    setShowAlert(false)
+    setHintArray(['', '', '', ''])
   }
 
   return (

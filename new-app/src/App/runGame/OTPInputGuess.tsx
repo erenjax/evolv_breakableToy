@@ -4,8 +4,7 @@ import * as Game from '../../model/game';
 import ClassNames from 'classnames';
 import WinModal from './modals/winModal';
 
-const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>}) => {
-  const [codeGuess, setCodeGuess] = useState([0, 0, 0, 0])
+const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const [hintArray, setHintArray] = useState(['', '', '', ''])
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
@@ -21,8 +20,10 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess:
     const newGuess: string[] = [...guess];
     newGuess[currentOTPIndex] = value.substring(value.length - 1);
 
-    if (!value) setActiveOTPIndex(currentOTPIndex - 1);
+    if (!value) setActiveOTPIndex(currentOTPIndex);
     else setActiveOTPIndex(currentOTPIndex + 1);
+
+
 
     setGuess(newGuess);
   };
@@ -36,6 +37,10 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess:
       setActiveOTPIndex(currentOTPIndex - 1);
     } else if (key === "Enter") {
       submitGuess();
+    } else if (key === "ArrowLeft") {
+      setActiveOTPIndex(activeOTPIndex - 1)
+    } else if (key === "ArrowRight") {
+      setActiveOTPIndex(activeOTPIndex + 1)
     }
   };
 
@@ -46,14 +51,11 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess:
   const submitGuess = (): void => {
     try {
       const codeForm: Code.Code = Code.fromString(guess.join(''))
+      setHintArray(['', '', '', ''])
       setErrorMessage("");
-      setCodeGuess(codeForm);
-      setHintArray(Game.getHintArray(randomNumber, codeForm));
-      setGuess(new Array(4).fill(""))
-      setActiveOTPIndex(0)
+      setTries(Game.getTriesCount(tries))
+      setTimeout(setHintArray, 500, Game.getHintArray(randomNumber, codeForm));
       if (Game.hintCount(randomNumber, codeForm) === 4) {
-        setCodeGuess([0, 0, 0, 0])
-        setHintArray(['', '', '', ''])
         setShowWinModal(true)
       }
     } catch (error) {
@@ -65,30 +67,25 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess:
   const handleOnClickSubmit = () => {
     submitGuess();
   };
+  const handleOnClickClear = () => {
+    setGuess(new Array(4).fill(""))
+    setActiveOTPIndex(0)
+  }
 
   const buildDigitStyle = (hint?: string): string => {
     switch (hint) {
       case ("miss"):
-        return "box-output border-output-wrong-red text-output-wrong-red"
+        return "box-output bg-output-wrong-red shadow-indicator-red"
       case ("key"):
-        return "box-output border-hacky-green"
+        return "box-output bg-hacky-green shadow-indicator-green"
     }
-    return "box-output border-gray-600"
+    return "box-output bg-charcoal"
   }
 
   return (
     <div>
-      <div className="flex items-center justify-center">
-        {hintArray.map((element, index) => {
-          return (
-            <div
-              key={index}
-              className={ClassNames(buildDigitStyle(element))}>
-              <p className='self-center'>{codeGuess[index]}</p>
-            </div>
-          )
-        })
-        }
+      <div className="flex place-content-end text-xl md:text-2xl">
+        <p className="pr-12">Tries: {tries}</p>
       </div>
       <div className="flex items-center justify-center">
         <div className="m-2 p-2 md:p-4 border-terminal-orange border-2 bg-black rounded-2xl shadow-inner">
@@ -109,11 +106,28 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess:
               );
             })}
           </div>
+          <div className="flex items-center justify-center">
+            {hintArray.map((element, index) => {
+              return (
+                <div
+                  key={index}
+                  className={ClassNames(buildDigitStyle(element))}>
+                </div>
+              )
+            })
+            }
+          </div>
         </div>
       </div>
-      <div className="m-4">
+      <div className="flex flex-row justify-center">
         <button
-          className="button-1"
+          className="button-1 m-4"
+          onClick={handleOnClickClear}
+        >
+          Clear
+        </button>
+        <button
+          className="button-1 m-4"
           onClick={handleOnClickSubmit}
         >
           Submit
@@ -122,7 +136,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber}: {guess:
       <div className="m-4 text-xl text-output-wrong-red">
         <p>{errorMessage}</p>
       </div>
-      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} />
+      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} setTries={setTries} setHintArray={setHintArray} setShowAlert={setShowAlert} />
     </div>
   );
 }
