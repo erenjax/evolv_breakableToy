@@ -3,30 +3,29 @@ import * as Code from "../../model/code";
 
 const RandomNumber = ({randomNumber, setRandomNumber, setShowAlert, setTries}: {randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>, setTries: React.Dispatch<React.SetStateAction<number>>}) => {
 
-  const getRandomDigit = (): Code.CodeDigit => {
-    const dig = Code.allDigits;
-    const rand = Math.floor(Math.random() * dig.length) as Code.CodeDigit;
-    if (dig.includes(rand)) {
-      return rand;
-    } else {
-      throw new Error("Failed to get random digit");
-    }
-  };
+  {/* const getRandomDigit = (): Code.CodeDigit => { */}
+  {/*   const dig = Code.allDigits; */}
+  {/*   const rand = Math.floor(Math.random() * dig.length) as Code.CodeDigit; */}
+  {/*   if (dig.includes(rand)) { */}
+  {/*     return rand; */}
+  {/*   } else { */}
+  {/*     throw new Error("Failed to get random digit"); */}
+  {/*   } */}
+  {/* }; */}
 
-  const buildRandomNumber = (): Code.Code => {
-    const randNum: Code.Code = [
-      getRandomDigit(),
-      getRandomDigit(),
-      getRandomDigit(),
-      getRandomDigit(),
-    ];
-    setRandomNumber(randNum)
-    return randomNumber;
-  };
+  {/* const buildRandomNumber = (): Code.Code => { */}
+  {/*   const randNum: Code.Code = [ */}
+  {/*     getRandomDigit(), */}
+  {/*     getRandomDigit(), */}
+  {/*     getRandomDigit(), */}
+  {/*     getRandomDigit(), */}
+  {/*   ]; */}
+  {/*   setRandomNumber(randNum) */}
+  {/*   return randomNumber; */}
+  {/* }; */}
   const handleOnClickGenerateNumber = () => {
     setShowAlert(true)
     setTries(0)
-    buildRandomNumber();
     console.log({randomNumber})
 
   }

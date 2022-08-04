@@ -6,7 +6,7 @@ const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, set
   const handleOnClick = () => {
     setShowWinModal(false)
     setGuess(new Array(4).fill(""))
-    setRandomNumber([0, 0, 0, 0])
+    setRandomNumber([2, 0, 2, 3])
     setTries(0)
     setShowAlert(false)
     setHintArray(['', '', '', ''])

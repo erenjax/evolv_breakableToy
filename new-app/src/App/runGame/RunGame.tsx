@@ -7,8 +7,7 @@ import HelpModal from "./modals/helpModal";
 
 const RunGame = () => {
   const [guess, setGuess] = useState(new Array(4).fill(""))
-  const defaultCode: Code.Code = [0, 0, 0, 0]
-  const [randomNumber, setRandomNumber] = useState(defaultCode)
+  const [randomNumber, setRandomNumber] = useState([2, 0, 2, 3] as Code.Code)
   const [showAlert, setShowAlert] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false)
   const [tries, setTries] = useState(0)
