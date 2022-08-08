@@ -18,7 +18,7 @@ const HelpModal = ({showHelpModal, setShowHelpModal}: {showHelpModal: boolean, s
               <li>Enter a 4-digit guess in the purple terminal squares</li>
               <li>Press Submit or hit the Enter key to submit your guess</li>
               <li>Indicators will signify if a digit is correct or incorrect</li>
-              <li>Plress clear to clear the terminal squares</li>
+              <li>Press clear to clear the terminal squares</li>
               <li>Continue guessing until you have cracked the code</li>
             </p>
           </div>
