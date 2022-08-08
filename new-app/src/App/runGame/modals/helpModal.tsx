@@ -13,7 +13,7 @@ const HelpModal = ({showHelpModal, setShowHelpModal}: {showHelpModal: boolean, s
           onClick={handleOnClick}>
           <div className="flex flex-col p-12 bg-black text-white rounded-2xl w-144 h-144 border-4 border-hacky-green">
             <p className="text-2xl md:text-4xl">How to Play</p>
-            <p className="text-sm md:text-lg text-left p-0 pt-8 md:p-8 md:pl-16">
+            <p className="text-xs md:text-lg text-left p-0 pt-8 md:p-8 md:pl-16">
               <li>Generate a Code</li>
               <li>Enter a 4-digit guess in the purple terminal squares</li>
               <li>Press Submit or hit the Enter key to submit your guess</li>
