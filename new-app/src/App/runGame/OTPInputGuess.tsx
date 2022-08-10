@@ -5,8 +5,7 @@ import * as Result from '../../model/result';
 import ClassNames from 'classnames';
 import WinModal from './modals/winModal';
 
-const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const [lightArray, setLightArray] = useState(['', '', '', ''])
+const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert, lightArray, setLightArray}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>, lightArray: string[], setLightArray: React.Dispatch<React.SetStateAction<string[]>>}) => {
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
@@ -80,7 +79,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
       case ("green"):
         return "box-output bg-hacky-green shadow-indicator-green"
       case ("yellow"):
-        return "box-output bg-yellow-300 shadow-indicator-green"
+        return "box-output bg-indicator-yellow shadow-indicator-yellow"
     }
     return "box-output bg-charcoal"
   }
@@ -91,7 +90,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
         <p className="pr-12">Tries: {tries}</p>
       </div>
       <div className="flex items-center justify-center">
-        <div className="m-2 p-2 md:p-4 border-terminal-orange border-2 bg-black rounded-2xl shadow-inner">
+        <div className="m-2 p-2 md:p-4 border-light-charcoal border-2 bg-black rounded-2xl shadow-inner">
           <p className="text-white">Enter Your Guess</p>
           <div className="p-2 space-x-2 md:space-x-4 text-white">
             {guess.map((_, index) => {
@@ -100,7 +99,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
                   <input
                     ref={index === activeOTPIndex ? inputRef : null}
                     type="number"
-                    className="box-input bg-ubuntu-purple"
+                    className="box-input bg-light-charcoal"
                     onChange={handleOnChange}
                     onKeyDown={(e) => handleOnKeyDown(e, index)}
                     value={guess[index]}
@@ -139,7 +138,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
       <div className="m-4 text-xl text-output-wrong-red">
         <p>{errorMessage}</p>
       </div>
-      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} setTries={setTries} setHintArray={setLightArray} setShowAlert={setShowAlert} />
+      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} tries={tries} setTries={setTries} setLightArray={setLightArray} setShowAlert={setShowAlert} />
     </div>
   );
 }

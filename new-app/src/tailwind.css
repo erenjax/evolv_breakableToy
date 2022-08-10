@@ -45,7 +45,7 @@ input[type="number"]::-webkit-outer-spin-button {
     @apply transition ease-in-out duration-700 flex justify-center bg-black rounded-lg text-center font-semibold m-1 w-12 h-2 md:w-24 md:h-4 md:m-2
    }
   .box-input{
-    @apply border-terminal-orange outline-hacky-green border-[3px] rounded-xl bg-ubuntu-purple shadow-md text-center font-semibold w-12 h-12 text-xl md:text-3xl md:w-24 md:h-24
+    @apply border-light-charcoal outline-hacky-green border-[3px] rounded-xl bg-ubuntu-purple shadow-input-box text-center font-semibold w-12 h-12 text-xl md:text-3xl md:w-24 md:h-24
   }
   .app-spinner{
     @apply h-40
