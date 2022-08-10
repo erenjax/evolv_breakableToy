@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import * as Code from '../../model/code';
 import * as Game from '../../model/game';
+import * as Result from '../../model/result';
 import ClassNames from 'classnames';
 import WinModal from './modals/winModal';
 
 const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
-  const [hintArray, setHintArray] = useState(['', '', '', ''])
+  const [lightArray, setLightArray] = useState(['', '', '', ''])
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
@@ -51,10 +52,10 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
   const submitGuess = (): void => {
     try {
       const codeForm: Code.Code = Code.fromString(guess.join(''))
-      setHintArray(['', '', '', ''])
+      setLightArray(['', '', '', ''])
       setErrorMessage("");
       setTries(Game.getTriesCount(tries))
-      setTimeout(setHintArray, 500, Game.getHintArray(randomNumber, codeForm));
+      setTimeout(setLightArray, 500, Result.checkResultLight(randomNumber, codeForm));
       if (Game.hintCount(randomNumber, codeForm) === 4) {
         setShowWinModal(true)
       }
@@ -72,12 +73,14 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
     setActiveOTPIndex(0)
   }
 
-  const buildDigitStyle = (hint?: string): string => {
-    switch (hint) {
-      case ("miss"):
+  const buildDigitStyle = (light?: string): string => {
+    switch (light) {
+      case ("red"):
         return "box-output bg-output-wrong-red shadow-indicator-red"
-      case ("key"):
+      case ("green"):
         return "box-output bg-hacky-green shadow-indicator-green"
+      case ("yellow"):
+        return "box-output bg-yellow-300 shadow-indicator-green"
     }
     return "box-output bg-charcoal"
   }
@@ -107,7 +110,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
             })}
           </div>
           <div className="flex items-center justify-center">
-            {hintArray.map((element, index) => {
+            {lightArray.map((element, index) => {
               return (
                 <div
                   key={index}
@@ -136,7 +139,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
       <div className="m-4 text-xl text-output-wrong-red">
         <p>{errorMessage}</p>
       </div>
-      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} setTries={setTries} setHintArray={setHintArray} setShowAlert={setShowAlert} />
+      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} setTries={setTries} setHintArray={setLightArray} setShowAlert={setShowAlert} />
     </div>
   );
 }
