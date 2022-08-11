@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import * as Code from '../../model/code';
+import * as RandNum from '../../model/generateRandNum'
 import RandomNumber from "./RandNum";
 import OtpInputGuess from "./OTPInputGuess";
 import AlertModal from "./modals/alertModal";
@@ -7,7 +8,7 @@ import HelpModal from "./modals/helpModal";
 
 const RunGame = () => {
   const [guess, setGuess] = useState(new Array(4).fill(""))
-  const defaultCode: Code.Code = [0, 0, 0, 0]
+  const defaultCode: Code.Code = RandNum.buildRandomNumber()
   const [randomNumber, setRandomNumber] = useState(defaultCode)
   const [showAlert, setShowAlert] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false)
