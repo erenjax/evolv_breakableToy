@@ -5,7 +5,7 @@ import * as Result from '../../model/result';
 import ClassNames from 'classnames';
 import WinModal from './modals/winModal';
 
-const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert, lightArray, setLightArray}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>, lightArray: string[], setLightArray: React.Dispatch<React.SetStateAction<string[]>>}) => {
+const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert, lightArray, setLightArray, setShowWeedle, setFadeWeedle}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>, lightArray: string[], setLightArray: React.Dispatch<React.SetStateAction<string[]>>, setShowWeedle: React.Dispatch<React.SetStateAction<boolean>>, setFadeWeedle: React.Dispatch<React.SetStateAction<boolean>>}) => {
   const [activeOTPIndex, setActiveOTPIndex] = useState(0)
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
@@ -48,9 +48,22 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
     inputRef.current?.focus();
   }, [activeOTPIndex]);
 
+  const setFade = () => {
+    setFadeWeedle(false)
+    setTimeout(setFadeWeedle, 500, true)
+  }
+
   const submitGuess = (): void => {
     try {
       const codeForm: Code.Code = Code.fromString(guess.join(''))
+      const stringForm: string = guess.join('')
+      if (stringForm === "0420") {
+        setShowWeedle(true)
+        setFade()
+      } else {
+        setShowWeedle(false)
+        setFade()
+      }
       setLightArray(['', '', '', ''])
       setErrorMessage("");
       setTries(Game.getTriesCount(tries))
@@ -138,7 +151,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
       <div className="m-4 text-xl text-output-wrong-red">
         <p>{errorMessage}</p>
       </div>
-      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} tries={tries} setTries={setTries} setLightArray={setLightArray} setShowAlert={setShowAlert} />
+      <WinModal showWinModal={showWinModal} setShowWinModal={setShowWinModal} setGuess={setGuess} setRandomNumber={setRandomNumber} tries={tries} setTries={setTries} setLightArray={setLightArray} setShowAlert={setShowAlert} setShowWeedle={setShowWeedle} />
     </div>
   );
 }
