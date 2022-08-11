@@ -18,12 +18,11 @@ const RandomNumber = ({randomNumber, setRandomNumber, setShowAlert, setTries, se
   return (
     <div className="pb-8">
       <div className="z-0">
-        <p>Generate a code to Start</p>
         <button
           className="button-1 m-2"
           onClick={handleOnClickGenerateNumber}
         >
-          Generate Code
+          Generate New Code
         </button>
       </div>
     </div>

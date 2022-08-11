@@ -17,8 +17,13 @@ const HelpModal = ({showHelpModal, setShowHelpModal}: {showHelpModal: boolean, s
               <li>Generate a Code</li>
               <li>Enter a 4-digit guess in the purple terminal squares</li>
               <li>Press Submit or hit the Enter key to submit your guess</li>
-              <li>Indicators will signify if a digit is correct or incorrect</li>
-              <li>A red light means the digit is not in the code, a yellow light means the digit exists in a different spot in the code, and a green light means the digit is the correct number in the correct spot in the code</li>
+              <li>Indicators will signify if a digit is correct or incorrect
+                <ul className="list-disc list-inside ml-8">
+                  <li>A red light means the digit is not in the code</li>
+                  <li>A yellow light means the digit exists in a different spot in the code</li>
+                  <li>A green light means the digit is the correct number in the correct spot in the code</li>
+                </ul>
+              </li>
               <li>Press clear to clear the terminal squares</li>
               <li>Continue guessing until you have cracked the code</li>
             </p>

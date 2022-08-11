@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@types/soundmanager2": "^2.97.4",
+    "classnames": "^2.3.1",
+    "prop-types": "^15.8.1",
+    "react-sound": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/react-sound": "^1.2.3"
+  }
+}
