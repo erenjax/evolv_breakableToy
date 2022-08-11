@@ -12,11 +12,14 @@ const RunGame = () => {
   const [showAlert, setShowAlert] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false)
   const [tries, setTries] = useState(0)
+  const [lightArray, setLightArray] = useState(['', '', '', ''])
   const RandomNumberProps = {
     randomNumber: randomNumber,
     setRandomNumber: setRandomNumber,
     setShowAlert: setShowAlert,
-    setTries: setTries
+    setTries: setTries,
+    setGuess: setGuess,
+    setLightArray: setLightArray
   }
   const OtpInputGuessProps = {
     guess: guess,
@@ -25,7 +28,9 @@ const RunGame = () => {
     setRandomNumber: setRandomNumber,
     tries: tries,
     setTries: setTries,
-    setShowAlert: setShowAlert
+    setShowAlert: setShowAlert,
+    lightArray: lightArray,
+    setLightArray: setLightArray
   }
   const handleOnClickHelp = () => {
     setShowHelpModal(true)

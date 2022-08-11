@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Code from '../../../model/code';
 
-const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, setTries, setHintArray, setShowAlert}: {showWinModal: boolean, setShowWinModal: React.Dispatch<React.SetStateAction<boolean>>, setGuess: React.Dispatch<React.SetStateAction<any[]>>, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, setTries: React.Dispatch<React.SetStateAction<number>>, setHintArray: React.Dispatch<React.SetStateAction<string[]>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, tries, setTries, setLightArray, setShowAlert}: {showWinModal: boolean, setShowWinModal: React.Dispatch<React.SetStateAction<boolean>>, setGuess: React.Dispatch<React.SetStateAction<any[]>>, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setLightArray: React.Dispatch<React.SetStateAction<string[]>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
   const handleOnClick = () => {
     setShowWinModal(false)
@@ -9,7 +9,7 @@ const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, set
     setRandomNumber([0, 0, 0, 0])
     setTries(0)
     setShowAlert(false)
-    setHintArray(['', '', '', ''])
+    setLightArray(['', '', '', ''])
   }
 
   return (
@@ -20,6 +20,7 @@ const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, set
           onClick={handleOnClick}>
           <div className="animate-bounce flex flex-col p-12 bg-black text-white rounded-2xl w-144 h-144 border-4 border-hacky-green">
             <p className="text-4xl">You Win!</p>
+            <p className="text-xl">Tries: {tries}</p>
           </div>
         </div>
       ) : null}
