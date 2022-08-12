@@ -1,25 +1,23 @@
-import * as Code from '../model/code'
-import {hintCount} from './game'
+import * as Code from "../model/code";
+import { hintCount } from "./game";
 
-it(
-  "hintCount", () => {
-    const randomNumber: Code.Code = [0, 0, 0, 0]
-    const guess1: Code.Code = [1, 1, 1, 0]
-    const guess2: Code.Code = [1, 1, 0, 0]
-    const guess3: Code.Code = [1, 0, 0, 0]
-    const guess4: Code.Code = [0, 0, 0, 0]
+it("hintCount", () => {
+  const randomNumber: Code.Code = [0, 0, 0, 0];
+  const guess1: Code.Code = [1, 1, 1, 0];
+  const guess2: Code.Code = [1, 1, 0, 0];
+  const guess3: Code.Code = [1, 0, 0, 0];
+  const guess4: Code.Code = [0, 0, 0, 0];
 
-    const result1 = hintCount(randomNumber, guess1)
-    const result2 = hintCount(randomNumber, guess2)
-    const result3 = hintCount(randomNumber, guess3)
-    const result4 = hintCount(randomNumber, guess4)
+  const result1 = hintCount(randomNumber, guess1);
+  const result2 = hintCount(randomNumber, guess2);
+  const result3 = hintCount(randomNumber, guess3);
+  const result4 = hintCount(randomNumber, guess4);
 
-    expect(result1).toBe(1)
-    expect(result2).toBe(2)
-    expect(result3).toBe(3)
-    expect(result4).toBe(4)
-  }
-)
+  expect(result1).toBe(1);
+  expect(result2).toBe(2);
+  expect(result3).toBe(3);
+  expect(result4).toBe(4);
+});
 // it(
 //   "getUnit", () => {
 //     const randomNumber: Code.Code = [1, 2, 3, 4]

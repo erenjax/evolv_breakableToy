@@ -1,5 +1,5 @@
-import React from 'react';
-import RunGame from './runGame';
+import React from "react";
+import RunGame from "./runGame";
 
 function App() {
   return (
