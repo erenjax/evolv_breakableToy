@@ -1,4 +1,4 @@
-import * as Code from './code'
+import * as Code from "./code";
 
 export const getRandomDigit = (): Code.CodeDigit => {
   const dig = Code.allDigits;
