@@ -2,7 +2,7 @@ import React from 'react';
 import * as Code from '../../../model/code';
 import * as RandNum from '../../../model/generateRandNum';
 
-const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, tries, setTries, setLightArray, setShowAlert}: {showWinModal: boolean, setShowWinModal: React.Dispatch<React.SetStateAction<boolean>>, setGuess: React.Dispatch<React.SetStateAction<any[]>>, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setLightArray: React.Dispatch<React.SetStateAction<string[]>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>}) => {
+const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, tries, setTries, setLightArray, setShowAlert, setShowWeedle}: {showWinModal: boolean, setShowWinModal: React.Dispatch<React.SetStateAction<boolean>>, setGuess: React.Dispatch<React.SetStateAction<any[]>>, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setLightArray: React.Dispatch<React.SetStateAction<string[]>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>, setShowWeedle: React.Dispatch<React.SetStateAction<boolean>>}) => {
 
   const handleOnClick = () => {
     setShowWinModal(false)
@@ -11,6 +11,7 @@ const WinModal = ({showWinModal, setShowWinModal, setGuess, setRandomNumber, tri
     setTries(0)
     setShowAlert(false)
     setLightArray(['', '', '', ''])
+    setShowWeedle(false)
   }
 
   return (

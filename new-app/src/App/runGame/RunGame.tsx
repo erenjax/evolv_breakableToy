@@ -5,8 +5,12 @@ import RandomNumber from "./RandNum";
 import OtpInputGuess from "./OTPInputGuess";
 import AlertModal from "./modals/alertModal";
 import HelpModal from "./modals/helpModal";
+import Weedle from "./modals/weedle";
 
 const RunGame = () => {
+  const [showWeedle, setShowWeedle] = useState(false)
+  const [fadeWeedle, setFadeWeedle] = useState(true)
+
   const [guess, setGuess] = useState(new Array(4).fill(""))
   const defaultCode: Code.Code = RandNum.buildRandomNumber()
   const [randomNumber, setRandomNumber] = useState(defaultCode)
@@ -31,7 +35,9 @@ const RunGame = () => {
     setTries: setTries,
     setShowAlert: setShowAlert,
     lightArray: lightArray,
-    setLightArray: setLightArray
+    setLightArray: setLightArray,
+    setShowWeedle: setShowWeedle,
+    setFadeWeedle: setFadeWeedle
   }
   const handleOnClickHelp = () => {
     setShowHelpModal(true)
@@ -41,7 +47,7 @@ const RunGame = () => {
     <div className="app-runGame">
       <div className="flex flex-col justify-center bg-charcoal border-8 border-hacky-green rounded-3xl h-full w-full p-6 md:p-16 md:pt-0 shadow-box">
         <AlertModal showAlert={showAlert} setShowAlert={setShowAlert} />
-        <h1>Nordle</h1>
+        <Weedle showWeedle={showWeedle} fadeWeedle={fadeWeedle} />
         <RandomNumber  {...RandomNumberProps} />
         <OtpInputGuess {...OtpInputGuessProps} />
         <div className="flex justify-end">
