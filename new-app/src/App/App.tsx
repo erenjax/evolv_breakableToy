@@ -4,7 +4,7 @@ import RunGame from "./runGame";
 function App() {
   return (
     <div className="app">
-      <header className="app-header">
+      <header>
         <RunGame />
       </header>
     </div>

@@ -15,6 +15,7 @@ const OTPInputGuess = ({
   setShowAlert,
   lightArray,
   setLightArray,
+  setIsWeedleOn,
 }: {
   guess: any[];
   setGuess: React.Dispatch<React.SetStateAction<any[]>>;
@@ -25,6 +26,7 @@ const OTPInputGuess = ({
   setShowAlert: React.Dispatch<React.SetStateAction<boolean>>;
   lightArray: string[];
   setLightArray: React.Dispatch<React.SetStateAction<string[]>>;
+  setIsWeedleOn: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [activeOTPIndex, setActiveOTPIndex] = useState(0);
   const [currentOTPIndex, setCurrentOTPIndex] = useState(0);
@@ -62,6 +64,18 @@ const OTPInputGuess = ({
     }
   };
 
+  const checkWeedle = (codeForm: Code.Code): boolean => {
+    if (
+      codeForm[0] === 0 &&
+      codeForm[1] === 4 &&
+      codeForm[2] === 2 &&
+      codeForm[3] === 0
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
     inputRef.current?.focus();
   }, [activeOTPIndex]);
@@ -77,6 +91,7 @@ const OTPInputGuess = ({
         500,
         Result.checkResultLight(randomNumber, codeForm)
       );
+      setIsWeedleOn(checkWeedle(codeForm));
       if (Game.hintCount(randomNumber, codeForm) === 4) {
         setShowWinModal(true);
       }
