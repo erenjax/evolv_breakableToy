@@ -5,15 +5,19 @@ import RandomNumber from "./RandNum";
 import OtpInputGuess from "./OTPInputGuess";
 import AlertModal from "./modals/alertModal";
 import HelpModal from "./modals/helpModal";
+import MusicSettings from "./modals/musicSettings";
 
 const RunGame = () => {
   const [guess, setGuess] = useState(new Array(4).fill(""))
   const defaultCode: Code.Code = RandNum.buildRandomNumber()
   const [randomNumber, setRandomNumber] = useState(defaultCode)
+
   const [showAlert, setShowAlert] = useState(false)
   const [showHelpModal, setShowHelpModal] = useState(false)
+  const [showMusicSettings, setShowMusicSettings] = useState(false)
   const [tries, setTries] = useState(0)
   const [lightArray, setLightArray] = useState(['', '', '', ''])
+
   const RandomNumberProps = {
     randomNumber: randomNumber,
     setRandomNumber: setRandomNumber,
@@ -36,6 +40,9 @@ const RunGame = () => {
   const handleOnClickHelp = () => {
     setShowHelpModal(true)
   }
+  const handleOnClickMusicSettings = () => {
+    setShowMusicSettings(!showMusicSettings)
+  }
 
   return (
     <div className="app-runGame">
@@ -44,9 +51,17 @@ const RunGame = () => {
         <h1>Nordle</h1>
         <RandomNumber  {...RandomNumberProps} />
         <OtpInputGuess {...OtpInputGuessProps} />
-        <div className="flex justify-end">
+        <div className="flex grid grid-rows-1 grid-flow-col flex-row">
+          <div className="justify-self-start">
+            <button
+              className="help-button justify-self-end"
+              onClick={handleOnClickMusicSettings}>
+              Music Settings
+            </button>
+            <MusicSettings showMusicSettings={showMusicSettings} setShowMusicSettings={setShowMusicSettings} />
+          </div>
           <button
-            className="help-button"
+            className="help-button justify-self-end"
             onClick={handleOnClickHelp}>
             ?
           </button>

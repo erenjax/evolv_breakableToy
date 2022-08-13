@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import * as Code from '../../model/code';
 import * as Game from '../../model/game';
 import * as Result from '../../model/result';
-import ClassNames from 'classnames';
 import WinModal from './modals/winModal';
 
 const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, setTries, setShowAlert, lightArray, setLightArray}: {guess: any[], setGuess: React.Dispatch<React.SetStateAction<any[]>>, randomNumber: Code.Code, setRandomNumber: React.Dispatch<React.SetStateAction<Code.Code>>, tries: number, setTries: React.Dispatch<React.SetStateAction<number>>, setShowAlert: React.Dispatch<React.SetStateAction<boolean>>, lightArray: string[], setLightArray: React.Dispatch<React.SetStateAction<string[]>>}) => {
@@ -113,7 +112,7 @@ const OTPInputGuess = ({guess, setGuess, randomNumber, setRandomNumber, tries, s
               return (
                 <div
                   key={index}
-                  className={ClassNames(buildDigitStyle(element))}>
+                  className={(buildDigitStyle(element))}>
                 </div>
               )
             })
